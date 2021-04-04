@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check changed files
+      - name: Check for changes
         id: diff
         run: |
           # See https://github.community/t/check-pushed-file-changes-with-git-diff-tree-in-github-actions/17220/10
@@ -41,12 +41,6 @@ jobs:
               continue # Exclude docs directory
             elif [ "$path" == *.rst ]; then
               continue # Exclude *.rst files
-            fi
-
-            # Set $os. "ubuntu-latest" by default. if directory starts with windows, then "windows-latest"
-            os="ubuntu-latest"
-            if [ "$directory" == windows* ]; then
-              os="windows-latest"
             fi
 
             # Add build to the matrix only if it is not already included
