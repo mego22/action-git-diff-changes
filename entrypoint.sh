@@ -13,8 +13,8 @@ git rev-parse "$base"
 git rev-parse "HEAD"
 git diff --check --color "$base..HEAD"
 
-#first_commit="$( git rev-list main..$branch | tail -n 1)"
-#numbert_of_commits="$( git rev-list main..$branch | wc -l)"
+first_commit="$( git rev-list --no-merges main.. | tail -n 1 )"
+numbert_of_commits="$( git rev-list --no-merges --count main.. )"
 
-#echo "First commit is: ${first_commit}"
-#echo "Number of commits: ${number_of_commits}"
+echo "First commit is: ${first_commit}"
+echo "Number of commits: ${number_of_commits}"
