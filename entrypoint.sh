@@ -11,6 +11,7 @@ branch="$(echo $GITHUB_REF | cut -d/ -f3)"
 base="HEAD^"
 git rev-parse "$base"
 git rev-parse "HEAD"
+git rev-pares "main"
 git diff --check --color "$base..HEAD"
 
 first_commit="$( git rev-list --no-merges main.. | tail -n 1 )"
