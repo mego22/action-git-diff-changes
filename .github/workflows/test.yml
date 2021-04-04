@@ -16,7 +16,7 @@ jobs:
         id: diff
         run: |
           # See https://github.community/t/check-pushed-file-changes-with-git-diff-tree-in-github-actions/17220/10
-          FIRST_COMMIT=$( git rev-list main..HEAD | tail -n 1 )
+          FIRST_COMMIT=$( git rev-list HEAD | tail -n 1 )
           export DIFF=$( git diff --name-only $FIRST_COMMIT ${{ github.event.pull_request.base.sha }} )
           echo "$DIFF"
           # Escape newlines (replace \n with %0A)
