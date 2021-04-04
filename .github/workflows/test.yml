@@ -9,11 +9,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: Testing the action
-        uses: ./
-        id: hello
-        with:
-          who-to-greet: 'Mona the Octocat'
+        run: |
+          git rev-list HEAD^
