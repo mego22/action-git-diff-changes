@@ -16,7 +16,7 @@ jobs:
         id: diff
         run: |
           # See https://github.community/t/check-pushed-file-changes-with-git-diff-tree-in-github-actions/17220/10
-          PRIMARY_BRANCH=$( git symbolic-ref refs/remotes/origin/HEAD | awk -F "/" '{print $NF}' )
+          git symbolic-ref refs/remotes/origin/HEAD | awk -F "/" '{print $NF}'
           FIRST_COMMIT=$( git log --pretty=format:%H origin/${{ PRIMARY_BRANCH }}.. | tail -n 1 )
           CURRENT_COMMIT=$( git log --pretty=format:%H origin/${{ PRIMARY_BRANCH }}.. | head -n 1 )
           export DIFF=$( git diff --name-only $FIRST_COMMIT $CURRENT_COMMIT )
