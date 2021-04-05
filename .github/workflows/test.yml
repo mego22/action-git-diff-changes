@@ -16,8 +16,8 @@ jobs:
         id: diff
         run: |
           # See https://github.community/t/check-pushed-file-changes-with-git-diff-tree-in-github-actions/17220/10
-          FIRST_COMMIT=$( git log --pretty=format:%H origin/main.. | tail -n 1 )
-          CURRENT_COMMIT=$( git log --pretty=format:%H origin/main.. | head -n 1 )
+          FIRST_COMMIT=$( git log --pretty=format:%H origin/${{ env.default_branch }}.. | tail -n 1 )
+          CURRENT_COMMIT=$( git log --pretty=format:%H origin/${{ env.default_branch }}.. | head -n 1 )
           export DIFF=$( git diff --name-only $FIRST_COMMIT $CURRENT_COMMIT )
           echo "$DIFF"
           # Escape newlines (replace \n with %0A)
